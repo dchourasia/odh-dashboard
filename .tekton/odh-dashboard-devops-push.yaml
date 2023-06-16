@@ -352,6 +352,9 @@ spec:
           value: main
         - name: pathInRepo
           value: task/skopeo-copy/0.2/skopeo-copy.yaml
+      workspaces:
+      - name: images-url
+        workspace: workspace
     workspaces:
     - name: workspace
     - name: git-auth
