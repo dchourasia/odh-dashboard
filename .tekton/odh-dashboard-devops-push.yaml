@@ -338,7 +338,7 @@ spec:
       - name: srcImageURL
         value: docker://$(tasks.build-container.results.IMAGE_URL)
       - name: destImageURL
-        value: docker://quay.io/dchouras//odh-dashboard-rhtap/odh-dashboard-devops:$(tasks.build-container.results.IMAGE_DIGEST)
+        value: docker://quay.io/dchouras/odh-dashboard-rhtap/odh-dashboard-devops:$(params.revision)
       runAfter:
       - sbom-json-check
       taskRef:
