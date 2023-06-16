@@ -72,7 +72,7 @@ spec:
       description: Force rebuild image
       name: rebuild
       type: string
-    - default: "false"
+    - default: "true"
       description: Skip checks against built image
       name: skip-checks
       type: string
@@ -333,6 +333,25 @@ spec:
         operator: in
         values:
         - "false"
+    - name: mirror-image
+      params:
+      - name: srcImageURL
+        value: $(tasks.build-container.results.IMAGE_URL)
+      - name: destImageURL
+        value: https://quay.io/repository/dchouras/odh-dashboard-rhtap/odh-dashboard-devops:$(tasks.build-container.results.IMAGE_DIGEST)
+      runAfter:
+      - sbom-json-check
+      taskRef:
+        resolver: git
+        params:
+        - name: url
+          value: https://github.com/tektoncd/catalog.git
+        - name: org
+          value: tektoncd
+        - name: revision
+          value: main
+        - name: pathInRepo
+          value: task/skopeo-copy/0.2/skopeo-copy.yaml
     workspaces:
     - name: workspace
     - name: git-auth
