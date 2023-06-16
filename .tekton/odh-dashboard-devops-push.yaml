@@ -336,9 +336,9 @@ spec:
     - name: mirror-image
       params:
       - name: srcImageURL
-        value: $(tasks.build-container.results.IMAGE_URL)
+        value: docker://$(tasks.build-container.results.IMAGE_URL)
       - name: destImageURL
-        value: https://quay.io/repository/dchouras/odh-dashboard-rhtap/odh-dashboard-devops:$(tasks.build-container.results.IMAGE_DIGEST)
+        value: docker://quay.io/dchouras//odh-dashboard-rhtap/odh-dashboard-devops:$(tasks.build-container.results.IMAGE_DIGEST)
       runAfter:
       - sbom-json-check
       taskRef:
