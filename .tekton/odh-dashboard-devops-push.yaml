@@ -333,28 +333,28 @@ spec:
         operator: in
         values:
         - "false"
-    - name: mirror-image
-      params:
-      - name: srcImageURL
-        value: docker://$(tasks.build-container.results.IMAGE_URL)
-      - name: destImageURL
-        value: docker://quay.io/dchouras/odh-dashboard-rhtap/odh-dashboard-devops:$(params.revision)
-      runAfter:
-      - sbom-json-check
-      taskRef:
-        resolver: git
-        params:
-        - name: url
-          value: https://github.com/tektoncd/catalog.git
-        - name: org
-          value: tektoncd
-        - name: revision
-          value: main
-        - name: pathInRepo
-          value: task/skopeo-copy/0.2/skopeo-copy.yaml
-      workspaces:
-      - name: images-url
-        workspace: workspace
+#    - name: mirror-image
+#      params:
+#      - name: srcImageURL
+#        value: docker://$(tasks.build-container.results.IMAGE_URL)
+#      - name: destImageURL
+#        value: docker://quay.io/dchouras/odh-dashboard-rhtap/odh-dashboard-devops:$(params.revision)
+#      runAfter:
+#      - sbom-json-check
+#      taskRef:
+#        resolver: git
+#        params:
+#        - name: url
+#          value: https://github.com/tektoncd/catalog.git
+#        - name: org
+#          value: tektoncd
+#        - name: revision
+#          value: main
+#        - name: pathInRepo
+#          value: task/skopeo-copy/0.2/skopeo-copy.yaml
+#      workspaces:
+#      - name: images-url
+#        workspace: workspace
     workspaces:
     - name: workspace
     - name: git-auth
